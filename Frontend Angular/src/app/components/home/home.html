@@ -1,13 +1,11 @@
 <div class="bg-dark min-vh-100 d-flex flex-column justify-content-center">
-  <div class="container pessoas">
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-11">
 
         <!-- Botão de sair -->
-        <div class="d-flex justify-content-end mb-3">
-          <button
-            class="btn btn-danger"
-            (click)="logout()">
+        <div class="d-flex justify-content-end mb-3 sair">
+          <button class="btn btn-danger" (click)="logout()">
             Sair
           </button>
         </div>
@@ -129,11 +127,11 @@
 
                     <td>
                       <div class="d-flex gap-2">
-                        <button class="btn btn-sm btn-info text-white" (click)="showNationality(person.id!)">
+                        <button class="btn btn-secondary text-white" (click)="showNationality(person.id!)">
                           Nacionalidade
                         </button>
 
-                        <button class="btn btn-sm btn-danger" (click)="delete(person.id!)">
+                        <button class="btn btn-danger text-white" (click)="delete(person.id!)">
                           Excluir
                         </button>
                       </div>
