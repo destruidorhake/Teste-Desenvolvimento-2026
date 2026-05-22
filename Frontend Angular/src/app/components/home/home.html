@@ -1,146 +1,149 @@
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-10">
+<div class="bg-dark min-vh-100 d-flex flex-column justify-content-center">
+  <div class="container pessoas">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
 
-      <!-- Botão de sair -->
-      <div class="d-flex justify-content-end mb-3">
-        <button
-          class="btn btn-danger"
-          (click)="logout()">
-          Sair
-        </button>
-      </div>
-
-      <!-- Título e descrição -->
-      <div class="text-center mb-5">
-        <h1 class="fw-bold">Cadastro de Pessoas</h1>
-        <p class="text-muted">
-          Sistema de gerenciamento de pessoas
-        </p>
-      </div>
-
-      <!-- FORMULÁRIO -->
-      <form #personForm="ngForm">
-        <div class="card shadow-sm border-0 mb-5">
-          <div class="card-body p-4">
-            <h4 class="mb-4">Registrar Pessoa</h4>
-            <div class="row">
-
-              <!-- NOME -->
-              <div class="col-md-6 mb-3">
-                <label class="form-label">Nome</label>
-                <input type="text" class="form-control" name="name" [(ngModel)]="person.name" #name="ngModel" required minlength="3"
-                 [class.is-invalid]="name.invalid && name.touched">
-
-                <div class="invalid-feedback">
-                  Nome deve ter no mínimo 3 caracteres!
-                </div>
-              </div>
-
-              <!-- SOBRENOME -->
-              <div class="col-md-6 mb-3">
-                <label class="form-label">Sobrenome</label>
-                <input type="text"class="form-control"name="lastname"[(ngModel)]="person.lastname"#lastname="ngModel"required minlength="3"
-                 [class.is-invalid]="lastname.invalid && lastname.touched">
-
-                <div class="invalid-feedback">
-                  Sobrenome deve ter no mínimo 3 caracteres!
-                </div>
-              </div>
-
-              <!-- Documento e tipo Documento-->
-              <div class="col-md-6 mb-3">
-                <label class="form-label"> Tipo de Documento </label>
-                <select class="form-select" [(ngModel)]="person.documentType" (change)="clearDocument()" name="documentType">
-
-                  <option value="CPF">CPF</option>
-                  <option value="RG">RG</option>
-                  <option value="CNPJ">CNPJ</option>
-                  <option value="OUTRO">OUTRO</option>
-
-                </select>
-              </div>
-
-              <div class="col-md-6 mb-3">
-                <label class="form-label">{{ person.documentType }}</label>
-                <input type="text" class="form-control" name="document" [(ngModel)]="person.document" [maxlength]="getDocumentMaxLength()" minlength="5"
-                        #document="ngModel" required [placeholder]="getDocumentPlaceholder() "(input)="formatDocument()" [class.is-invalid]="document.invalid && document.touched"/>
-                <div class="invalid-feedback">
-                  Documento inválido
-                </div>
-              </div>
-              <!-- Fim Documento -->
-
-              <!-- E-MAIL -->
-              <div class="col-md-6 mb-3">
-                <label class="form-label">E-mail</label>
-                <input type="email"class="form-control"name="email"[(ngModel)]="person.email"#email="ngModel"required email [class.is-invalid]="email.invalid && email.touched">
-                <div class="invalid-feedback">
-                  E-mail inválido
-                </div>
-              </div>
-
-            </div>
-
-            <!-- BOTÃO SALVAR -->
-            <div class="text-end mt-3">
-            <button class="btn btn-primary px-4" (click)="save(personForm)" [disabled]="personForm.invalid">
-                Salvar
-              </button>
-            </div>
-          </div>
+        <!-- Botão de sair -->
+        <div class="d-flex justify-content-end mb-3">
+          <button
+            class="btn btn-danger"
+            (click)="logout()">
+            Sair
+          </button>
         </div>
-      </form>
 
-      <!-- TABELA -->
-      <div class="card shadow-sm border-0">
-        <div class="card-body p-4">
+        <!-- Título e descrição -->
+        <div class="text-center mb-5">
+          <h1 class="fw-bold text-white">Cadastro de Pessoas</h1>
+          <p class="text-muted">
+            Sistema de gerenciamento de pessoas
+          </p>
+        </div>
 
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="mb-0">Pessoas Registradas</h4>
+        <!-- FORMULÁRIO -->
+        <form #personForm="ngForm">
+          <div class="card shadow-sm border-0 mb-5">
+            <div class="card-body p-4" >
+              <h4 class="mb-4">Registrar Pessoa</h4>
+              <div class="row">
+
+                <!-- NOME -->
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Nome</label>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="person.name" #name="ngModel" required minlength="3"
+                  [class.is-invalid]="name.invalid && name.touched">
+
+                  <div class="invalid-feedback">
+                    Nome deve ter no mínimo 3 caracteres!
+                  </div>
+                </div>
+
+                <!-- SOBRENOME -->
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Sobrenome</label>
+                  <input type="text"class="form-control"name="lastname"[(ngModel)]="person.lastname"#lastname="ngModel"required minlength="3"
+                  [class.is-invalid]="lastname.invalid && lastname.touched">
+
+                  <div class="invalid-feedback">
+                    Sobrenome deve ter no mínimo 3 caracteres!
+                  </div>
+                </div>
+
+                <!-- Documento e tipo Documento-->
+                <div class="col-md-6 mb-3">
+                  <label class="form-label"> Tipo de Documento </label>
+                  <select class="form-select" [(ngModel)]="person.documentType" (change)="clearDocument()" name="documentType">
+
+                    <option value="CPF">CPF</option>
+                    <option value="RG">RG</option>
+                    <option value="CNPJ">CNPJ</option>
+                    <option value="OUTRO">OUTRO</option>
+
+                  </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">{{ person.documentType }}</label>
+                  <input type="text" class="form-control" name="document" [(ngModel)]="person.document" [maxlength]="getDocumentMaxLength()" minlength="5"
+                          #document="ngModel" required [placeholder]="getDocumentPlaceholder() "(input)="formatDocument()" [class.is-invalid]="document.invalid && document.touched"/>
+                  <div class="invalid-feedback">
+                    Documento inválido!
+                  </div>
+                </div>
+                <!-- Fim Documento -->
+
+                <!-- E-MAIL -->
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">E-mail</label>
+                  <input type="email"class="form-control"name="email"[(ngModel)]="person.email"#email="ngModel"required email [class.is-invalid]="email.invalid && email.touched">
+                  <div class="invalid-feedback">
+                    E-mail inválido!
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- BOTÃO SALVAR -->
+              <div class="text-end mt-3">
+              <button class="btn btn-primary px-4" (click)="save(personForm)" [disabled]="personForm.invalid">
+                  Salvar
+                </button>
+              </div>
+            </div>
           </div>
+        </form>
 
-          <div class="table-responsive">
-            <table class="table table-hover align-middle">
+        <!-- TABELA -->
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
 
-              <!-- TITULOS -->
-              <thead class="table-light">
-                <tr>
-                  <th>Nome</th>
-                  <th>Sobrenome</th>
-                  <th>Documento</th>
-                  <th>Email</th>
-                  <th width="250">Ações</th>
-                </tr>
-              </thead>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4 class="mb-0">Pessoas Registradas</h4>
+            </div>
 
-              <!-- CORPO E DADOS -->
-              <tbody>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
 
-                <tr *ngFor="let person of persons">
+                <!-- TITULOS -->
+                <thead class="table-light">
+                  <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Documento</th>
+                    <th>Email</th>
+                    <th width="250">Ações</th>
+                  </tr>
+                </thead>
 
-                  <td>{{ person.name }}</td>
-                  <td>{{ person.lastname }}</td>
-                  <td>{{ person.document }}</td>
-                  <td>{{ person.email }}</td>
+                <!-- CORPO E DADOS -->
+                <tbody>
 
-                  <td>
-                    <div class="d-flex gap-2">
-                      <button class="btn btn-sm btn-info text-white" (click)="showNationality(person.id!)">
-                        Nacionalidade
-                      </button>
+                  <tr *ngFor="let person of persons">
 
-                      <button class="btn btn-sm btn-danger" (click)="delete(person.id!)">
-                        Excluir
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.lastname }}</td>
+                    <td>{{ person.document }}</td>
+                    <td>{{ person.email }}</td>
+
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-info text-white" (click)="showNationality(person.id!)">
+                          Nacionalidade
+                        </button>
+
+                        <button class="btn btn-sm btn-danger" (click)="delete(person.id!)">
+                          Excluir
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
