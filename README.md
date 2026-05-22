@@ -23,6 +23,7 @@ Tecnologias do Backend
 - Spring Boot: v4.0.6
 - Apache Tomcat: 11.0.21
 - Database driver: H2 JDBC Driver
+- 
 
 🚀 Como Inicializar o Projeto
 1. Clonar o Repositório
@@ -51,9 +52,10 @@ Compile e execute a aplicação (PeopleApiApplication):
 Console do H2: Você pode visualizar os dados em tempo real acessando: 
 👉 http://localhost:8080/h2-console
 Configuração:
-- Generic H2 (Embedded)
-- username=sa
-- password=     (Vazío)
+- spring.datasource.url=jdbc:h2:mem:testdb
+- spring.datasource.driverClassName=org.h2.Driver
+- spring.datasource.username=sa
+- spring.datasource.password=    (Vazío)
 
 📚 Documentação da API (Swagger)
 A API possui uma interface de documentação interativa utilizando o Swagger (OpenAPI). Através dela, você pode visualizar todos os endpoints disponíveis, consultar os modelos de dados e realizar requisições de teste diretamente pelo navegador.
