@@ -18,6 +18,8 @@ import Swal from 'sweetalert2';
 })
 export class Home implements OnInit {
 
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
   persons: Person[] = [];
 
   person: Person = {
@@ -265,5 +267,24 @@ export class Home implements OnInit {
         }, 1500);
       }
     });
+  }
+
+  // Paginação
+  get paginatedPersons(): Person[] {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.persons.slice(start, start + this.itemsPerPage);
+  }
+
+  // Métodos de controle
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) this.currentPage++;
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) this.currentPage--;
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.persons.length / this.itemsPerPage);
   }
 }
