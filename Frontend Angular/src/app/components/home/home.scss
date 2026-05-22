@@ -20,10 +20,15 @@ body {
 
 .fundo{
   background-color: #343a40;
-  height: 100dvh;
+  height: auto;
   width: 100dvw;
+  max-height: 100dvh;
 }
 
 .pessoas{
   padding-top: 1dvh;
+}
+
+.tabela{
+  margin-bottom: 5dvh;
 }

@@ -1,3 +1,4 @@
+import { DocumentPipe } from '../../pipes/document.pipe';
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../../models/person';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, DocumentPipe],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -71,11 +72,11 @@ export class Home implements OnInit {
         showConfirmButton: false
       });
 
+      this.loadPersons();
+
       form.resetForm({
         documentType: 'CPF'
       });
-
-      this.loadPersons();
     },
 
     // Erros de validação
@@ -89,12 +90,9 @@ export class Home implements OnInit {
             ? JSON.parse(error.error)
             : error.error;
 
-        // Quando vem { message: "..." }
         if (parsed.message) {
           message = parsed.message;
         } else {
-
-          // Quando vem vários erros de validação
           message = Object.values(parsed).join('\n');
         }
 
