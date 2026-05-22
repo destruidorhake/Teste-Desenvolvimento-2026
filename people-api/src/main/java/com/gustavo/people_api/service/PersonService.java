@@ -88,7 +88,6 @@ public class PersonService {
             return countryName +
                     " (" + String.format("%.2f", probability * 100) + "%)";
         }
-
         return "Nacionalidade não encontrada";
     }
 }
